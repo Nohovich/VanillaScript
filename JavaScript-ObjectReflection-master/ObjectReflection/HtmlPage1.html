@@ -1,0 +1,77 @@
+﻿<script type="text/javascript">
+    var Employee = function (firstName, lastName, gender, email) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.gender = gender;
+        this.email = email;
+    }
+
+    Employee.prototype.getFullName = function () {
+        return this.firstName + " " + this.lastName;
+    }
+
+    Employee.prototype.getEmail = function () {
+        return this.email;
+    }
+
+    Employee.prototype.getGender = function () {
+        return this.gender;
+    }
+
+    var employee = new Employee("Mark", "Matt", "Male", "a@a.com");
+
+    var PermanentEmployee = function (annualSalry) {
+        this.annualSalary = annualSalry;
+    }
+
+    PermanentEmployee.prototype = employee;
+
+    var pe = new PermanentEmployee(50000);
+
+
+    //The following code retrieves all the public properties and methods of the Employee object.
+
+    for (var property in employee) {
+        document.write(property + "<br/>");
+    }
+
+    //The following code retrieves all the public properties & functions of the Employee object along with their values.
+    for (var property in employee) {
+        document.write(property + " : " + employee[property] + "<br/>");
+    }
+
+    //The following code retrieves only the public properties of the Employee object.
+
+    for (var property in employee) {
+        if (typeof employee[property] != "function") {
+            document.write(property + " : " + employee[property] + "<br/>");
+        }
+    }
+
+    //The following code retrieves only the public functions of the Employee object.
+
+    for (var property in employee) {
+        if (typeof employee[property] == "function") {
+            document.write(property + " : " + employee[property] + "<br/>");
+        }
+    }
+
+    //we are using hasOwnProperty() method to determine if a property is defined on the actual object or it's prototype.
+    //This method returns true if the property is defined by the object itself,
+    //otherwise false.The following code retrieves only the public members that are defined in the PermanentEmployee object.
+    //The members inherited from the base Employee object are excluded.
+
+    for (var property in pe) {
+        if (pe.hasOwnProperty(property)) {
+            document.write(property + " : " + pe[property] + "<br/>");
+        }
+    }
+
+    //The following code retrieves only the public members inherited from the parent object.Public members defined in PermanentEmployee object are excluded.
+    for (var property in pe) {
+        if (!pe.hasOwnProperty(property)) {
+            document.write(property + " : " + pe[property] + "<br/>");
+        }
+    }
+
+</script>

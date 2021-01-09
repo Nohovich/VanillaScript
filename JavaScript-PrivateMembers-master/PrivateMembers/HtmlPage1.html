@@ -1,0 +1,28 @@
+﻿
+    <script type="text/javascript">
+        function Employee(firstName, lastName) {
+
+            // Private functions - Declared inside the object using one of the 2 ways shown below. Can be called only by privileged methods.
+            var privateGetFullName = function () {
+                privateFullName = firstName + " " + lastName;
+                return privateFullName;
+            }
+            // Privileged Function - Declared using this keyoword and are available both within and outside the object.
+            this.privilegedGetFullName = function () {
+                return privateGetFullName();
+            }
+            // Public Function - Defined by using the object's prototype property and are available both within and outside the object.
+            Employee.prototype.publicGetFullName = function () {
+                return this.privilegedGetFullName();
+            }
+        }
+        var employee = new Employee("Tom", "Grover");
+        employee.privateFullName // Calling private field - undefined error
+
+        // Add a field with same name as the private field but this field is Public
+        employee.privateFullName = "ABC";
+        document.write(employee.publicGetFullName() + "<br/>");
+
+        document.write(employee.privateFullName);
+
+    </script>

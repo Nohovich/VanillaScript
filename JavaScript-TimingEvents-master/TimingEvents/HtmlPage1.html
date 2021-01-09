@@ -1,0 +1,59 @@
+﻿
+<div id="timeDiv"></div>
+<br />
+<input type="button" value="Start Clock" onclick="startClock()" />
+<input type="button" value="Stop Clock" onclick="stopClock()" />
+<br />
+<br />
+<input type="text" value="10" id="txtBox" />
+<br />
+<br />
+<!-- passing the txtBox as a value for the startTimer method -->
+<input type="button" value="Start Timer" onclick="startTimer('txtBox')" />
+<input type="button" value="Stop Timer" onclick="stopTimer()" />
+<script type="text/javascript">
+    // global variable
+    var intervalId;
+    // to make the time on the page dynamic, we are using setInterval() method and calling getCurrentDateTime() function every 1000 milli-seconds.
+    function startClock() {
+        // setInterval method returns its ID so the clearInterval method will know which setInterval it needs to stop
+        intervalId = setInterval(getCurrentDateTime, 1000);
+    }
+
+    // after pressing the Start clock button our global variable intervalId gets initialized with the ID of the setInterval method
+    // clearInterval can cancel the setInterval method by having its ID
+    function stopClock() {
+        clearInterval(intervalId);
+    }
+
+    function getCurrentDateTime() {
+        document.getElementById("timeDiv").innerHTML = new Date();
+    }
+
+    // on page load
+    getCurrentDateTime();
+
+    var intervalId1;
+
+    // passing the txtBox as a value for this method
+    function startTimer(controlId) {
+        var control = document.getElementById(controlId);
+        var seconds = control.value;
+        seconds = seconds - 1;
+        if (seconds == 0) {
+            control.value = "Done";
+            return;
+        }
+        else {
+            control.value = seconds;
+        }
+        // setTimeout method returns its ID so the clearTimeout method will know which setTimeout it needs to stop
+        intervalId1 = setTimeout(function () { startTimer('txtBox'); }, 1000);
+    }
+
+    // after pressing the Start timer button our global variable intervalId1 gets initialized with the ID of the setTimeout method
+    // clearTimeout can cancel the setTimeout method by having its ID
+    function stopTimer() {
+        clearTimeout(intervalId1);
+    }
+</script>

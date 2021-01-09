@@ -1,0 +1,15 @@
+﻿<script type="text/javascript">
+    //Using a regular expression literal
+    // Regular expressions created using regular expression literals are automatically compiled when the script is loaded.
+    // So if you know that the regular expression is not going to change then use this approach for better performance.
+    var regex = /\d+/g;
+    //The following example replaces all the numbers with XXX
+    var string = "Tom contact number is 1011011010. His age is 35.";
+    string += "Mark contact number is 8912398912. His age is 45";
+    document.write(string.replace(/\d+/g, "XXX"));
+    //Using the constructor function of the RegExp object
+    //Regular expressions created using the constructor function are compiled at runtime. Use this approach when the regular expression is expected to change.
+    var regexp = new RegExp("\\d+", "g");
+    //  this  test() method of the RegExp object to check if the string contains numbers.
+    document.write("String contain numbers - " + regexp.test(string))
+</script>

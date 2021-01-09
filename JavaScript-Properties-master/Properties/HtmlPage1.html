@@ -1,0 +1,36 @@
+﻿<script type="text/javascript">
+    //In the example name is read - only property and age is read / write property.
+    function Employee(name, age) {
+        var _name = name;
+        var _age = age;
+        //to define a property use this Object.defineProperty method,
+        //we are passing two parameters for tihs method the first is this(the property is in this function)
+        //the second is the nagme of the property
+        Object.defineProperty(this, "age",
+            {
+                get: function () { return _age; },
+                set: function (value) {
+                    if (value > 100 || value < 1) {
+                        alert("Invalid age");
+                    }
+                    else {
+                        _age = value;
+                    }
+                }
+            });
+
+        Object.defineProperty(this, "name",
+            {
+                get: function () { return _name; }
+            });
+    }
+
+    var employee = new Employee("Tom", 55);
+    // Nothing stops you from assigning a value of 50 to age field
+    employee.age = 50;
+    // Cannot change the value of name property (read-only)
+    employee.name = "Tommy";
+    // Will alert an error - Invalid age
+    employee.age = 195;
+    document.write(employee.name + " " + employee.age);
+</script>

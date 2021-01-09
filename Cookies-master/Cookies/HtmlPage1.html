@@ -1,0 +1,32 @@
+﻿<!-- Cookies are small text files that a browser stores in the visitor's computer.
+    A cookie is basically a string of name-value pairs separated by semi-colons. -->
+
+<select id="ddlTheme" onchange="setColorCookie()">
+    <option value="Select Color">Select Color</option>
+    <option value="red">Red</option>
+    <option value="green">Green</option>
+    <option value="blue">Blue</option>
+</select>
+<script type="text/javascript">
+    window.onload = function () {
+        if (document.cookie.length != 0) {
+            var nameValueArray = document.cookie.split("=");
+            document.getElementById("ddlTheme").value = nameValueArray[1];
+            document.bgColor = nameValueArray[1];
+        }
+    }
+
+    function setColorCookie() {
+        var selectedValue = document.getElementById("ddlTheme").value;
+        if (selectedValue != "Select Color") {
+            document.bgColor = selectedValue;
+            document.cookie = "color=" + selectedValue +
+                ";expires=Fri, 5 Aug 2021 01:00:00 UTC;";
+            //document.cookie = "color=red;max-age=" + (60 * 60 * 24 * 30) + ";path=/";
+             // The above code creates a cookie that expires in 30 days
+            //If you want to create a cookie that is valid across all your pages in your website,
+            //then set the path attribute to the root of your web directory, that is, "/".
+
+        }
+    }
+</script>

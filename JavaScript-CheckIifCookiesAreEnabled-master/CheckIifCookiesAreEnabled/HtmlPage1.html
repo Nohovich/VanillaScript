@@ -1,0 +1,23 @@
+﻿<div id="msg"></div>
+<script type="text/javascript">
+    function cookiesEnabled() {
+        // navigator.cookieEnabled returns true or false if cookies are enabled(new browser version)
+        var cookiesEnabled = (navigator.cookieEnabled) ? true : false;
+        // old browser version
+        if (typeof navigator.cookieEnabled == "undefined" && !cookiesEnabled) {
+            // creatig test cookie
+            document.cookie = "mytestcookie";
+            // testing the cookie if the value is different then -1 then we can use cookies
+            cookiesEnabled = (document.cookie.indexOf("mytestcookie") != -1) ? true : false;
+        }
+
+        return cookiesEnabled;
+    }
+
+    if (cookiesEnabled()) {
+        document.getElementById("msg").innerHTML = "Cookies enabled";
+    }
+    else {
+        document.getElementById("msg").innerHTML = "Cookies disabled";
+    }
+</script>

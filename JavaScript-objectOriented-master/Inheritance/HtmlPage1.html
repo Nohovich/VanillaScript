@@ -1,0 +1,40 @@
+﻿<script type="text/javascript">
+    console.clear()
+
+    function c(msg) {
+        console.log(msg)
+    }
+
+    // creating the A class
+    class CarE6 {
+        constructor({ model }) {
+            this.model = model
+        }
+        drive() {
+            return 'vroooooooom'
+        }
+    }
+    // creating instance
+    const my_car = new CarE6({ model: "Honda" })
+    c(my_car.drive())
+
+    // creating the B class that Inhernt from A class
+    class Toyota extends CarE6 {
+        constructor({ color }) {
+            // base(A) constructor
+            super({ model: "Toyota" })
+            this.color = color
+        }
+        print() {
+
+            c(`Toyota ${this.color}`)
+        }
+    }
+
+    // creating instance
+    const my_toyota = new Toyota({ color: "red" })
+    
+
+    document.write("Toyota = " + my_toyota.print() + "<br/>");
+    
+</script>

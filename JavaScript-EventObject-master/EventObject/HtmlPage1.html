@@ -1,0 +1,28 @@
+﻿<input type="button" value="Click me" id="btn"
+       onclick="displayEventDetails(event)"
+       onmouseover="displayEventDetails(event)"
+       onmouseout="displayEventDetails(event)" />
+<br />
+<br />
+<div id="resultDiv"></div>
+<script type="text/javascript">
+    function displayEventDetails(event) {
+        var sourceElement;
+
+        // check if browser is IE 8 and lower dont support event.target
+        if (event.srcElement) {
+            sourceElement = event.srcElement;
+        }
+        // browser that is  IE 9+ support event.target
+        else {
+            sourceElement = event.target;
+        }
+
+        var eventDetails = "Event = " + event.type + "<br/> X = " + event.clientX
+            + "<br/>Y = " + event.clientY + "<br/>Target Type = "
+            + sourceElement.type + "<br/>Target Tag Name = "
+            + sourceElement.tagName;
+
+        document.getElementById("resultDiv").innerHTML = eventDetails;
+    }
+</script>

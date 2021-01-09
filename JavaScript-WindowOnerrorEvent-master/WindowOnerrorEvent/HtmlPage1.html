@@ -1,0 +1,30 @@
+﻿
+<script type="text/javascript">
+
+    window.onerror = function (message, url, line) {
+        alert("Message : " + message + "\nURL : " + url + "\nLine Number : " + line);
+        // Return true to supress the browser error messages
+        // (like in older versions of Internet Explorer)
+        return true;
+    }
+    // we are calling a method that isn't exist this will crush the system
+    // and call the method above window.onerror
+    // NonExistingFunction();
+
+    // we are calling a method that isn't exist inside a try which make it safe
+    try {
+        NonExistingFunction();
+    }
+    catch (e) {
+        // writeing the eror
+        document.write(e.message);
+    }
+
+    function imageErrorHandler() {
+        alert("There is a problem loading the image");
+    }
+</script>
+
+<!-- we don't this src(the Image).
+    on error attribute we are passing a method we created if something is wrong  -->
+<img src="NonExistingImage.jpg" onerror="imageErrorHandler()" />

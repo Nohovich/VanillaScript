@@ -1,0 +1,54 @@
+﻿<!-- you need multiple instances of the object use constructor function where as if you need just one instance of the object then use literal notation. -->
+    <script type="text/javascript">
+        // Creating an object in JavaScript using constructor function
+        // Object defined with a function constructor lets you have multiple instances of that object.
+        //This means change made to one instance, will not affect other instances.
+        function Employee(firstName, lastName) {
+            this.firstName = firstName;
+            this.lastName = lastName;
+
+            this.getFullName = function () {
+                return this.firstName + " " + this.lastName;
+            }
+        }
+
+        var employee = new Employee("Pragim", "Tech");
+
+        document.write("FirstName = " + employee.firstName + "<br/>");
+        document.write("LastName = " + employee.lastName + "<br/>");
+        document.write("FullName = " + employee.getFullName() + "<br/>");
+
+        // Creating an object in JavaScript using literal notation
+        var employee =
+        {
+            firstName: "Pragim",
+            lastName: "Tech",
+
+            getFullName: function () {
+                return this.firstName + " " + this.lastName;
+            }
+        }
+
+        document.write("FirstName = " + employee.firstName + "<br/>");
+        document.write("LastName = " + employee.lastName + "<br/>");
+        document.write("FullName = " + employee.getFullName() + "<br/>");
+
+
+        // properties
+        class Rectangle {
+            constructor(width, height) {
+                this._width = width
+                this._height = height
+            }
+            set width(width) { this._width = width }
+            get width() { return this._width }
+            set height(height) { this._height = height }
+            get height() { return this._height }
+            get area() { return this._width * this._height }
+        }
+        var r = new Rectangle(50, 20)
+ 
+        document.write("Rectangle area = " + r.area + "<br/>");
+        document.write("Rectangle width = " + r.width + "<br/>");
+        document.write("Rectangle height = " + r.height + "<br/>");
+    </script>

@@ -1,0 +1,57 @@
+﻿<!-- JavaScript code detects which mouse button is clicked. It works in all versions of IE and most other W3C complaint browsers. -->
+<!-- event.button or event.which properties of the event object are used to determine which mouse button is clicked.  -->
+<script type="text/javascript">
+    function whichMouseButtonClicked(event) {
+        var whichButton;
+        if (event.which) {
+            switch (event.which) {
+                case 1:
+                    whichButton = "Left Button Clicked";
+                    break;
+                case 2:
+                    whichButton = "Middle Button Clicked";
+                    break;
+                case 3:
+                    whichButton = "Right Button Clicked";
+                    break;
+                default:
+                    whichButton = "Invalid Button Clicked";
+                    break;
+            }
+        }
+        else {
+            switch (event.button) {
+                case 1:
+                    whichButton = "Left Button Clicked";
+                    break;
+                case 4:
+                    whichButton = "Middle Button Clicked";
+                    break;
+                case 2:
+                    whichButton = "Right Button Clicked";
+                    break;
+                default:
+                    whichButton = "Invalid Button Clicked";
+                    break;
+            }
+        }
+
+        alert(whichButton);
+    }
+
+    // disableRightClick on the page
+    document.oncontextmenu = disableRightClick;
+
+    function disableRightClick(event) {
+        event = event || window.event;
+
+        if (event.preventDefault) {
+            event.preventDefault();
+        }
+        else {
+            event.returnValue = false
+        }
+    }
+</script>
+<!--  onmouseup lets you click with the 3 buttons of the mouse -->
+<button onmouseup="whichMouseButtonClicked(event)">Click Me</button>

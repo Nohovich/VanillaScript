@@ -1,0 +1,26 @@
+﻿<!-- A closure is an inner function that has access to the outer function’s variables in addition to it's own variables and global variables.
+     In simple terms a closure is function inside a function.
+    These functions, that is the inner and outer functions could be named functions or anonymous functions.-->
+<script type="text/javascript">
+    // incrementClickCount = the inner anonymous function
+    // incrementClickCount will keep track on clickCount value even after the function was finished
+
+    var incrementClickCount =
+        // by putting  the function inside the (function) we are making it possible for it to run only one time
+        (
+            function () {
+                // the value we want to increment
+                var clickCount = 0;
+
+                // inner anonymous function
+                // only this part can happened multiple times 
+                return function () {
+                    return ++clickCount;
+                }
+
+            }
+            // the (); at the end of the function = to .invoke
+        )();
+</script>
+
+<input type="button" value="Click Me" onclick="alert(incrementClickCount());" />

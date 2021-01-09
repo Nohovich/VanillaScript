@@ -1,0 +1,31 @@
+﻿<!--  we are assigning event handlers using the DOM object properties -->
+<!-- If an event handler is assigned using both, i.e an HTML attribute and DOM object property,
+    the handler that is assigned using the DOM object property overwrites the one assigned using HTML attribute -->
+    <input type="button" value="Click me" id="btn1" onclick="clickHandler1()" />
+<br />
+<br />
+<input type="button" value="Click me" id="btn" />
+<script type="text/javascript">
+
+    document.getElementById("btn1").onclick = clickHandler2;
+
+    function clickHandler1()
+    {
+        alert("Handler set using HTML attribute");
+    }
+
+    function clickHandler2()
+    {
+        alert("Handler set using DOM object property");
+    }
+
+    document.getElementById("btn").onmouseover = function () {
+        this.style.background = 'red';
+        this.style.color = 'yellow';
+    }
+
+    document.getElementById("btn").onmouseout = function () {
+        this.style.background = 'black';
+        this.style.color = 'white';
+    }
+</script>

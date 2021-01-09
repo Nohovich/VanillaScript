@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <script type="text/javascript">
+        // Source array
+        var myArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+        // this method returns an Array
+        // callback function created directly in the filter method as anonymous function
+        // v = value of the element in the array, i = index position of the element in the array, a = The source array
+        // { return v % 2 == 0 } = only valus that are even we be in the new array
+        var result = myArray.filter(function (v, i, a) { return v % 2 == 0 });
+        document.write(result);
+
+        var myArray = ["Sam", "Mark", "Tim", "Sam"];
+        // Remove duplicates from javascript array
+        // index always returns the first value
+        var uniqueItems = myArray.filter(function (v, i, a) { return a.indexOf(v) == i });
+        document.write(uniqueItems);
+       
+
+    </script>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+
+</body>
+</html>

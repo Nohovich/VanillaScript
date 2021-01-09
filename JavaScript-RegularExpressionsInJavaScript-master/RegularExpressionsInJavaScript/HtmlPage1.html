@@ -1,0 +1,29 @@
+﻿<!-- A regular expression is a sequence of characters that forms a search pattern. -->
+<!-- https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions -->
+<input type="text" id="txtBox" style="width:250px" />
+<br />
+<br />
+<input type="button" value="Process String" onclick="processString()"
+       style="width:250px" />
+<br />
+<br />
+<textarea id="txtArea" rows="4" cols="30"></textarea>
+<script type="text/javascript">
+    function processString() {
+        // Clear the textarea element
+        document.getElementById("txtArea").value = "";
+        // Retrieve the user intput from the textbox
+        var inputString = document.getElementById("txtBox").value;
+        // Regular expression should be in 2 forward slashes //
+        // Letter g at the end of the regular expression performs a global match
+        // match() method returns all substrings that match the given regular expression
+        var result = inputString.match(/\d+/g);
+
+        if (result != null) {
+            // Add the retrieved numbers to the textarea element
+            for (var i = 0; i < result.length; i++) {
+                document.getElementById("txtArea").value += result[i] + "\r\n";
+            }
+        }
+    }
+</script>

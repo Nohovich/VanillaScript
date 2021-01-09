@@ -1,0 +1,38 @@
+﻿<html>
+<head>
+    <style type="text/css">
+        .divStyle {
+            display: table-cell;
+            border: 5px solid black;
+            padding: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <!-- event capturing(tunnel), the event gets captured from the outer most element to innermost element. -->
+    <div id="DIV1" class="divStyle">
+        DIV 1
+        <div id="DIV2" class="divStyle">
+            DIV 2
+            <div id="DIV3" class="divStyle">
+                DIV 3
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        var divElements = document.getElementsByTagName('div');
+
+        // To enable event capturing(tunnel) we have set the third parameter (phase) of addEventListener() method to true
+        for (var i = 0; i < divElements.length; i++) {
+            divElements[i].addEventListener("click", clickHandler, true);
+        }
+
+        // event.stopPropagation() = Stopping event capturing(tunnel)
+        function clickHandler(event) {
+            event.stopPropagation();
+            alert(this.getAttribute("id") + " click event handled");
+        }
+    </script>
+</body>
+</html>

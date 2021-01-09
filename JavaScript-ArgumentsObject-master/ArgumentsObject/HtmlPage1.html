@@ -1,0 +1,23 @@
+﻿<!--The JavaScript arguments object is a local variable available within all functions.
+    It contains all the function parameters that are passed to the function and can be indexed like an array.
+    The length property of the arguments object returns the number of arguments passed to the function.-->
+<script type="text/javascript">
+    function printArguments() {
+        document.write("Number of arguments = " + arguments.length + "<br/>")
+        for (var i = 0; i < arguments.length; i++) {
+            document.write("Argument " + i + " = " + arguments[i] + "<br/>");
+        }
+        document.write("<br/>");
+    }
+
+    printArguments();
+    printArguments("A", "B");
+    printArguments(10, 20, 30);
+
+    function numbers() {
+        var argsArray = Array.prototype.slice.call(arguments);
+        argsArray.sort();
+        document.write(argsArray);
+    }
+    numbers(50, 20, 40);
+</script>

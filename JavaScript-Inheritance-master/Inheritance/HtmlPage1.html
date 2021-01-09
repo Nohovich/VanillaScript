@@ -1,0 +1,26 @@
+﻿<!-- In JavaScript, we don't have the concept of classes, so inheritance in JavaScript is prototype-based.  -->
+<script type="text/javascript">
+    var Employee = function (name) {
+        this.name = name;
+    }
+
+    var PermanentEmployee = function (annualSalary) {
+        this.annualSalary = annualSalary;
+    }
+
+    var employee = new Employee("Mark");
+    // establish inheritance
+    PermanentEmployee.prototype = employee;
+
+    var pe = new PermanentEmployee(50000);
+    // Use hasOwnProperty() method to determine if a property is defined on the actual object or it's prototype.
+    document.write("Employee.name: " +
+        employee.hasOwnProperty('name') + "<br/>");
+    document.write("Employee.annualSalary: " +
+        employee.hasOwnProperty('annualSalary') + "<br/><br/>");
+
+    document.write("PermanentEmployee.name: " +
+        pe.hasOwnProperty('name') + "<br/>");
+    document.write("PermanentEmployee.annualSalary: " +
+        pe.hasOwnProperty('annualSalary') + "<br/>");
+</script>

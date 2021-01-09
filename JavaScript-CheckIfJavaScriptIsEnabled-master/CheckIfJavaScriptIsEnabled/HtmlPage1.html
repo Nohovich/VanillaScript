@@ -1,0 +1,40 @@
+﻿<!-- The easiest way to detect if JavaScript is enabled is by using noscript tag.
+    The content inside the <noscript> element will be displayed only if scripts are not supported,
+    or are disabled in the user's browser.  -->
+<noscript>
+    <style type="text/css">
+        .rootDiv {
+            display: none;
+        }
+    </style>
+    <h1>It seems that you have disabled JavaScript. Please enable JavaScript.</h1>
+</noscript>
+<div id="rootElement" class="rootDiv">
+    <table border="1">
+        <tr>
+            <td>Name</td>
+            <td>
+                <input id="txtName" type="text" onfocus="validateIfEmpty('txtName')"
+                       onblur="validateIfEmpty('txtName')" onkeyup="validateIfEmpty('txtName')" />
+            </td>
+        </tr>
+        <tr>
+            <td>Gender</td>
+            <td>
+                <input id="txtGender" type="text" onfocus="validateIfEmpty('txtGender')"
+                       onblur="validateIfEmpty('txtGender')" onkeyup="validateIfEmpty('txtGender')" />
+            </td>
+        </tr>
+    </table>
+</div>
+<script type="text/javascript">
+    function validateIfEmpty(control) {
+        var controlToValidate = document.getElementById(control);
+        if (controlToValidate.value == "") {
+            controlToValidate.style.background = "red";
+        }
+        else {
+            controlToValidate.style.background = "white";
+        }
+    }
+</script>
